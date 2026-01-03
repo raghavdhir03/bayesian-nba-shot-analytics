@@ -113,7 +113,7 @@ As sample size increases, `w_data` dominates and shrinkage → 0.
 
 ---
 
-## 🔬 Concrete Example: Stephen Curry
+## Example: Stephen Curry
 
 **Above-the-Break 3PT**
 
@@ -149,7 +149,7 @@ As sample size increases, `w_data` dominates and shrinkage → 0.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -257,30 +257,6 @@ Position-specific priors reveal **relative performance within position**, not ju
 **Wide CI (> 15%)**: High uncertainty — small sample, need more data
 
 This quantifies **confidence** in a way raw percentages cannot.
-
----
-
-## Use Cases
-
-### For Coaches
-- **Player Evaluation**: Distinguish luck from skill in hot/cold streaks
-- **Matchup Planning**: Assess shooting ability with confidence bounds
-- **Development Focus**: Identify zones needing more attempts for reliable assessment
-
-### For Analysts
-- **Projections**: Use posterior means instead of raw percentages
-- **Uncertainty**: CI width indicates when more data is needed
-- **Fair Comparison**: Compare players within their position baseline
-
-### For Bettors
-- **Prop Bets**: Assess over/under probabilities with credible intervals
-- **Risk Management**: Wide CIs signal uncertain bets
-- **Value Identification**: Find mispriced props based on Bayesian estimates
-
-### For Front Offices
-- **Scouting**: Properly evaluate players with limited NBA sample sizes
-- **Contract Decisions**: Quantify shooting ability with uncertainty bounds
-- **Trade Analysis**: Position-adjusted comparisons for fair player valuations
 
 ---
 
