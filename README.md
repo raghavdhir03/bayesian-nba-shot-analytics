@@ -10,7 +10,6 @@ A comprehensive Bayesian shot analytics platform that provides probabilistic sho
 *NBA shooting zones with position-specific priors*
 
 ![Stats Dashboard](screenshots/stats_table.png)
-*Interactive dashboard showing Bayesian estimates with uncertainty quantification*
 
 ---
 
@@ -18,7 +17,7 @@ A comprehensive Bayesian shot analytics platform that provides probabilistic sho
 
 Traditional NBA shot charts suffer from two critical flaws:
 
-1. **No Uncertainty Quantification**: A player going 3/5 (60%) is treated identically to one going 300/500 (60%), despite vastly different confidence levels.
+1. **No Uncertainty Quantification**: A player going 24/40 (60%) is treated identically to one going 300/500 (60%), despite vastly different confidence levels.
 
 2. **Position-Agnostic Comparison**: Comparing all players to league-wide averages ignores fundamental positional differences in shooting profiles.
 
@@ -43,10 +42,10 @@ Instead of saying *"Player X shoots 42% from the corner"*, we say:
 
 ## 🏀 Key Innovation: Position-Specific Priors
 
-Rather than using a single league-wide average as the Bayesian prior, we compute **21 separate priors**:
+Rather than using a single league-wide average as the Bayesian prior, we compute **18 separate priors**:
 
 - **3 Positions**: Guards, Forwards, Centers
-- **7 Shooting Zones**: Restricted Area, Paint (Non-RA), Mid-Range, Left Corner 3, Right Corner 3, Above the Break 3, Backcourt
+- **6 Shooting Zones**: Restricted Area, Paint (Non-RA), Mid-Range, Left Corner 3, Right Corner 3, Above the Break 3
 
 ### Example: Above-the-Break 3PT Priors
 
@@ -150,29 +149,6 @@ As sample size increases, `w_data` dominates and shrinkage → 0.
 
 ---
 
-## 📂 Project Structure
-
-```
-bayesian-nba-shot-analytics/
-│
-├── data/                                  # Data storage
-│   ├── nba_shots_2023_24.parquet         # Raw shot data (~218K shots)
-│   ├── player_positions_2023_24.parquet  # Player positions
-│   ├── position_priors_2023_24.parquet   # Position-specific priors
-│   └── bayesian_posteriors_2023_24.parquet  # Final Bayesian results
-│
-├── nba_shot_pipeline_v2.py               # Data collection pipeline
-├── bayesian_posteriors.py                # Bayesian modeling engine
-├── streamlit_stats_dashboard.py          # Interactive web app
-├── analyze.py                            # Analysis utilities
-│
-├── screenshots/                          # Dashboard screenshots
-├── court_zones_reference.png             # Court zones diagram
-└── README.md
-```
-
----
-
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -184,7 +160,7 @@ pip install nba_api pandas numpy scipy streamlit
 ### Step 1: Collect Data (~10 minutes)
 
 ```bash
-python nba_shot_pipeline_v2.py
+python data_pull.py
 ```
 
 This scrapes:
@@ -197,7 +173,7 @@ This scrapes:
 ### Step 2: Compute Bayesian Posteriors (~30 seconds)
 
 ```bash
-python bayesian_posteriors.py
+python bayesian_model.py
 ```
 
 This:
@@ -210,7 +186,7 @@ This:
 ### Step 3: Launch Interactive Dashboard
 
 ```bash
-streamlit run streamlit_stats_dashboard.py
+streamlit run streamlit_app.py
 ```
 
 **Opens in browser**: `http://localhost:8501`
@@ -453,7 +429,7 @@ MIT License - feel free to use and modify for your own projects.
 
 ## 👤 Author
 
-**Raghav**
+**Raghav Dhir**
 
 *Built with Python, Bayesian statistics, and a love for basketball analytics.*
 
@@ -472,5 +448,3 @@ MIT License - feel free to use and modify for your own projects.
 Questions or suggestions? Open an issue or reach out!
 
 **Remember**: The goal isn't perfect predictions but **quantifying uncertainty** to make better-informed decisions.
-
-🏀 *"All models are wrong, but some are useful"* — George Box
