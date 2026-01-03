@@ -13,7 +13,7 @@ A comprehensive Bayesian shot analytics platform that provides probabilistic sho
 
 ---
 
-## 🎯 The Problem
+## The Problem
 
 Traditional NBA shot charts suffer from two critical flaws:
 
@@ -25,7 +25,7 @@ Traditional NBA shot charts suffer from two critical flaws:
 
 ---
 
-## 💡 The Solution
+## The Solution
 
 This platform implements a **Beta-Binomial Bayesian framework** with **position-specific priors** to provide:
 
@@ -40,7 +40,7 @@ Instead of saying *"Player X shoots 42% from the corner"*, we say:
 
 ---
 
-## 🏀 Key Innovation: Position-Specific Priors
+## Key Innovation: Position-Specific Priors
 
 Rather than using a single league-wide average as the Bayesian prior, we compute **18 separate priors**:
 
@@ -59,7 +59,7 @@ This ensures guards are compared to guards, centers to centers, etc.
 
 ---
 
-## 📊 Mathematical Framework
+## Mathematical Framework
 
 ### Beta-Binomial Conjugate Prior Model
 
@@ -131,7 +131,7 @@ As sample size increases, `w_data` dominates and shrinkage → 0.
 
 ---
 
-## 🆚 Comparison: Rookie with Small Sample
+## Comparison: Rookie with Small Sample
 
 **Above-the-Break 3PT**
 
@@ -193,9 +193,9 @@ streamlit run streamlit_app.py
 
 ---
 
-## 🎨 Features
+## Features
 
-### Interactive Streamlit Dashboard
+### Streamlit Dashboard
 
 - **Player Search**: Type-ahead search with dropdown
 - **Court Reference**: Visual diagram of shooting zones
@@ -229,7 +229,7 @@ top_shooters(df, zone='Above the Break 3', position='Guard', min_attempts=100)
 
 ---
 
-## 📈 Key Findings
+## Key Findings
 
 ### 1. Shrinkage is Sample-Size Dependent
 
@@ -260,7 +260,7 @@ This quantifies **confidence** in a way raw percentages cannot.
 
 ---
 
-## 🔍 Use Cases
+## Use Cases
 
 ### For Coaches
 - **Player Evaluation**: Distinguish luck from skill in hot/cold streaks
@@ -284,7 +284,7 @@ This quantifies **confidence** in a way raw percentages cannot.
 
 ---
 
-## 🧮 Technical Details
+## Technical Details
 
 ### Data Collection
 
@@ -336,7 +336,7 @@ ci_upper = stats.beta.ppf(0.975, posterior_alpha, posterior_beta)
 
 ---
 
-## 🎓 Why Beta-Binomial?
+## Why Beta-Binomial?
 
 The Beta-Binomial model is ideal for shooting percentages because:
 
@@ -348,7 +348,7 @@ The Beta-Binomial model is ideal for shooting percentages because:
 
 ---
 
-## 📊 Future Enhancements
+## Future Enhancements
 
 ### 1. Hierarchical Bayesian Model
 Instead of independent priors per position-zone:
@@ -379,7 +379,7 @@ Combine individual shooting estimates to evaluate lineup spacing and offensive e
 
 ---
 
-## 📝 Data Schema
+## Data Schema
 
 ### `bayesian_posteriors_2023_24.parquet`
 
@@ -405,7 +405,7 @@ Combine individual shooting estimates to evaluate lineup spacing and offensive e
 
 ---
 
-## 📚 References
+## References
 
 ### Statistical Theory
 - Gelman, A., et al. (2013). *Bayesian Data Analysis* (3rd ed.). Chapman & Hall/CRC.
@@ -421,7 +421,7 @@ Combine individual shooting estimates to evaluate lineup spacing and offensive e
 
 ---
 
-## 📄 License
+## License
 
 MIT License - feel free to use and modify for your own projects.
 
@@ -435,7 +435,7 @@ MIT License - feel free to use and modify for your own projects.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - NBA Stats API contributors
 - Streamlit team for the excellent web framework
@@ -443,8 +443,8 @@ MIT License - feel free to use and modify for your own projects.
 
 ---
 
-## 📧 Contact
+## Contact
 
-Questions or suggestions? Open an issue or reach out!
+Questions or suggestions? Open an issue or reach out to dhir.raghav@gmail.com!
 
 **Remember**: The goal isn't perfect predictions but **quantifying uncertainty** to make better-informed decisions.
