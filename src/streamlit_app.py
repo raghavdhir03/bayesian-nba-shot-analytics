@@ -46,9 +46,6 @@ def main():
         st.info("Run `python bayesian_posteriors.py` first to generate the data.")
         st.stop()
     
-    # ========================================================================
-    # PLAYER SEARCH
-    # ========================================================================
     col1, col2 = st.columns([2, 1])
     
     with col1:
@@ -77,29 +74,18 @@ def main():
     
     st.divider()
     
-    # ========================================================================
     # ZONE REFERENCE IMAGE
-    # ========================================================================
+
     st.subheader("📍 NBA Court Zones Reference")
     
-    # Display fixed reference image
-    # Get the directory where this script is located
     script_dir = Path(__file__).parent
     reference_image_path = script_dir / 'court_zones_reference.png'
     
     if reference_image_path.exists():
-        # Center the image and make it half size
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.image(str(reference_image_path), caption="NBA Shooting Zones", use_column_width=True)
     else:
-        st.warning(f"""
-        ⚠️ **Court reference image not found**
-        
-        Looking for: `{reference_image_path}`
-        
-        Please add a file named `court_zones_reference.png` in the same directory as this script.
-        """)
         
         # Fallback: show zone descriptions
         st.info("""
@@ -115,9 +101,8 @@ def main():
     
     st.divider()
     
-    # ========================================================================
     # STATISTICS TABLE
-    # ========================================================================
+
     st.subheader(f"📊 {selected_player} - Bayesian Shot Statistics")
     
     # Get player data
@@ -153,10 +138,9 @@ def main():
         hide_index=True,
         height=400
     )
-    
-    # ========================================================================
-    # DETAILED STATISTICS (EXPANDABLE)
-    # ========================================================================
+
+    # DETAILED STATISTICS
+  
     with st.expander("🔬 Advanced Bayesian Parameters"):
         advanced_data = []
         
@@ -174,9 +158,9 @@ def main():
         advanced_df = pd.DataFrame(advanced_data)
         st.dataframe(advanced_df, use_container_width=True, hide_index=True)
     
-    # ========================================================================
+
     # KEY INSIGHTS
-    # ========================================================================
+    
     st.divider()
     st.subheader("💡 Key Insights")
     
@@ -209,9 +193,8 @@ def main():
             f"±{highest_confidence['ci_width']*100/2:.1f}%"
         )
     
-    # ========================================================================
     # FOOTER / LEGEND
-    # ========================================================================
+   
     st.divider()
     st.markdown("""
     ### 📖 Understanding the Statistics

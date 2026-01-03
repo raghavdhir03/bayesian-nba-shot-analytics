@@ -1,7 +1,3 @@
-"""
-Convert Bayesian posteriors to JSON for web visualization
-"""
-
 import pandas as pd
 import json
 from pathlib import Path
@@ -12,7 +8,6 @@ POSTERIORS_FILE = OUTPUT_DIR / 'bayesian_posteriors_2023_24.parquet'
 JSON_OUTPUT = Path('shot_chart_data.json')
 
 def convert_to_json():
-    """Convert parquet data to JSON format for web viz"""
     
     print(f"\n{'='*70}")
     print("CONVERTING DATA FOR WEB VISUALIZATION")
@@ -41,16 +36,10 @@ def convert_to_json():
     
     file_size = JSON_OUTPUT.stat().st_size / 1024
     
-    print(f"✅ Successfully created {JSON_OUTPUT}")
-    print(f"   File size: {file_size:.1f} KB")
-    print(f"   Records: {len(data):,}")
-    print(f"\n{'='*70}")
-    print("NEXT STEPS")
-    print(f"{'='*70}")
-    print("1. Open shot_chart_visualization.html in a browser")
-    print("2. The visualization will load shot_chart_data.json")
-    print("3. Search for a player and explore their Bayesian shot chart!")
-    print()
+    print(f"Successfully created {JSON_OUTPUT}")
+    print(f" File size: {file_size:.1f} KB")
+    print(f" Records: {len(data):,}")
+
 
 if __name__ == "__main__":
     convert_to_json()

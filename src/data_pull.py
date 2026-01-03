@@ -403,7 +403,6 @@ def save_data(shots_df, positions_df, league_priors_df, position_priors_df, play
 
 
 # MAIN EXECUTION
-# ============================================================================
 def main():
     """Main execution pipeline"""
     
@@ -448,35 +447,18 @@ def main():
         shots_df = scrape_shot_data()
         shots_df = merge_position_data(shots_df, positions_df)
     
-    # ========================================================================
-    # STEP 3: Data quality checks
-    # ========================================================================
+
     check_data_quality(shots_df)
     
-    # ========================================================================
-    # STEP 4: Compute priors
-    # ========================================================================
     league_priors = compute_league_priors(shots_df)
     position_priors = compute_position_priors(shots_df)
     
-    # ========================================================================
-    # STEP 5: Compute player statistics
-    # ========================================================================
     player_stats = compute_player_stats(shots_df)
-    
-    # ========================================================================
-    # STEP 6: Save everything
-    # ========================================================================
+
     save_data(shots_df, positions_df, league_priors, position_priors, player_stats)
     
     print(f"\n{'='*70}")
     print(f"PIPELINE COMPLETE!")
-    print(f"{'='*70}\n")
-    print("Next steps:")
-    print("1. Run Bayesian modeling script with position-specific priors")
-    print("2. Compare league-wide vs position-specific posteriors")
-    print("3. Build visualization dashboard with position filters")
-    print("4. Analyze shrinkage effects by position\n")
 
 
 if __name__ == "__main__":

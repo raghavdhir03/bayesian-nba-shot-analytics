@@ -1,16 +1,8 @@
-"""
-NBA Bayesian Posterior Computation
-Computes position-specific Bayesian posteriors with credible intervals
-"""
-
 import pandas as pd
 import numpy as np
 from scipy import stats
 from pathlib import Path
 
-# ============================================================================
-# CONFIGURATION
-# ============================================================================
 OUTPUT_DIR = Path('data')
 POSITION_PRIORS_FILE = OUTPUT_DIR / 'position_priors_2023_24.parquet'
 PLAYER_STATS_FILE = OUTPUT_DIR / 'player_shot_stats_2023_24.parquet'
@@ -20,9 +12,8 @@ OUTPUT_FILE = OUTPUT_DIR / 'bayesian_posteriors_2023_24.parquet'
 CREDIBLE_INTERVAL = 0.95
 
 
-# ============================================================================
-# BAYESIAN POSTERIOR COMPUTATION
-# ============================================================================
+#POSTERIOR COMPUTATION
+
 def compute_posterior(player_makes, player_attempts, prior_alpha, prior_beta):
     # Posterior parameters
     posterior_alpha = prior_alpha + player_makes
@@ -43,9 +34,7 @@ def compute_shrinkage(raw_pct, posterior_mean):
     return raw_pct - posterior_mean
 
 
-# ============================================================================
-# MAIN COMPUTATION
-# ============================================================================
+
 def compute_all_posteriors():
     
     print(f"\n{'='*70}")
@@ -120,9 +109,6 @@ def compute_all_posteriors():
     return results_df
 
 
-# ============================================================================
-# ANALYSIS & INSIGHTS
-# ============================================================================
 def analyze_results(df):
     
     print(f"\n{'='*70}")
@@ -290,13 +276,6 @@ def main():
     
     print(f"\n{'='*70}")
     print(f"ANALYSIS COMPLETE!")
-    print(f"{'='*70}\n")
-    print("Key Insights:")
-    print("• Position-specific priors provide better comparison baselines")
-    print("• High-volume shooters (Curry, Jokic) experience minimal shrinkage")
-    print("• Low-volume shooters show substantial regularization toward priors")
-    print("• Credible intervals quantify uncertainty (narrow for high volume)")
-    print("• Bayesian approach naturally handles sample size differences\n")
 
 
 if __name__ == "__main__":
